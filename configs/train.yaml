@@ -1,0 +1,32 @@
+# Training Configuration for PI-RAFT AMV Pipeline
+
+dataset:
+  satellite: "GOES16"
+  product: "ABI-L2-CMIPC"
+  band: "C09"
+  year: 2024
+  day_of_year: 120
+  train_hours: [14, 15, 16, 17]
+  val_hours: [18]
+  crop_size: 512
+  batch_size: 1
+
+model:
+  hidden_dim: 128
+  corr_radius: 3
+  train_iters: 4
+
+loss:
+  alpha: 0.5     # Fluid Smoothness (SC) weight
+  beta: 0.1      # Constancy Gradient (GC) weight
+  gamma: 0.01    # Hinting Background (EW) weight
+  epsilon: 0.001 # Charbonnier penalty threshold
+
+optimizer:
+  type: "AdamW"
+  lr: 0.0001
+  epochs: 3
+
+logging:
+  log_interval: 2
+  checkpoint_dir: "./model_checkpoints"

@@ -1,4 +1,6 @@
-{
+import json
+
+notebook_data = {
  "cells": [
   {
    "cell_type": "markdown",
@@ -11,7 +13,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": None,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -21,7 +23,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": None,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -49,7 +51,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": None,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -79,7 +81,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": None,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -98,7 +100,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": None,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -173,7 +175,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": None,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -191,7 +193,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": None,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -226,3 +228,10 @@
  "nbformat": 4,
  "nbformat_minor": 2
 }
+
+notebook_path = "c:/Users/Yash/OneDrive/Desktop/IMD_AMV_DOF/PI-RAFT-INSAT/notebooks/baseline.ipynb"
+
+with open(notebook_path, "w", encoding="utf-8") as f:
+    json.dump(notebook_data, f, indent=1)
+
+print("Successfully updated baseline.ipynb!")
