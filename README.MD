@@ -62,8 +62,8 @@ PI-RAFT-INSAT/
 ### Local Setup
 Clone the repository and install it in editable mode:
 ```bash
-git clone https://github.com/imd-amd-dof/PI-RAFT.git
-cd PI-RAFT
+git clone https://github.com/ice-user/PI-RAFT.git
+cd PI-RAFT-INSAT
 pip install -r requirements.txt
 pip install -e .
 ```
@@ -81,33 +81,4 @@ python scripts/inference.py --config configs/inference.yaml
 ```
 
 ### Google Colab Execution
-
-The orchestration notebook at [`notebooks/baseline.ipynb`](notebooks/baseline.ipynb) runs the full pipeline (data loading, training, inference, and NetCDF export) headless in Colab. Follow these steps:
-
-1. **Open in Colab**: Go to [colab.research.google.com](https://colab.research.google.com), select **File → Upload notebook**, and upload `notebooks/baseline.ipynb` from this repository.
-
-2. **Set runtime to GPU**: Click **Runtime → Change runtime type** and set **Hardware accelerator** to **GPU** (required for training).
-
-3. **Mount Google Drive (optional)**: If you want to persist checkpoints and output files, add a cell at the top with:
-   ```python
-   from google.colab import drive
-   drive.mount('/content/drive')
-   ```
-
-4. **Clone the repo**: Add a cell after the drive mount (or at the very top if not using Drive) to clone the repository:
-   ```python
-   !git clone https://github.com/imd-amd-dof/PI-RAFT.git
-   %cd PI-RAFT
-   !pip install -r requirements.txt
-   !pip install -e .
-   ```
-
-5. **Run all cells**: Select **Runtime → Run all**. The notebook will:
-   - Install dependencies (`boto3`, `netcdf4`, `xarray`)
-   - Stream GOES-16 proxy data from public S3 buckets
-   - Generate an untrained baseline wind field visualization
-   - Train the model for 3 epochs (AdamW optimizer, physics-informed loss)
-   - Run inference with iteration scaling (4 vs. 12 iterations)
-   - Export retrieved wind vectors to a CF-compliant NetCDF4 file
-
-   Checkpoints are saved to `./model_checkpoints/` and the final NetCDF to `./outputs/meteorological_outputs/INSAT_3DS_AMV_Derived_Wind.nc`.
+For Colab environments, import the orchestration notebook located at [baseline.ipynb](file:///c://notebooks/baseline.ipynb). It is structured to run setting commands and packages directly, install the repository, and execute model training headless.
